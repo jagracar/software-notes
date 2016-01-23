@@ -1,0 +1,82 @@
+
+Install all the LAMP packages:
+
+  sudo aptitude install tasksel 
+  sudo tasksel install lamp-server
+
+Check that everything went fine opening the following address in the browser:
+
+  http://localhost/
+
+Edit the Apache configuration file:
+
+  cd /etc/apache2
+  sudo zile apache2.conf
+  
+Change the following lines:
+
+  <Directory /var/www/>
+          Options Indexes FollowSymLinks
+          AllowOverride None
+          Require all granted
+  </Directory>
+
+to:
+
+  <Directory /home/jgracia/github/jagracar.com/WebContent>
+          Options Indexes FollowSymLinks
+          AllowOverride None
+          Require all granted
+  </Directory>
+
+Add the new site to the available sites:
+
+  cd /etc/apache2/sites-available
+  sudo cp 000-default.conf jagracar.conf
+  sudo zile jagracar.conf
+  
+Change the DocumentRoot to /home/jgracia/github/jagracar.com/WebContent
+
+Deactivate the old site, and activate our new one:
+
+  sudo a2dissite 000-default && sudo a2ensite jagracar
+
+Restart apache:
+
+  sudo /etc/init.d/apache2 restart
+
+Check that the new site is visible:
+
+  http://localhost/
+
+Install compass and sass for CSS editing:
+  
+  sudo aptitude install ruby ruby-dev
+  sudo gem update --system
+  sudo gem install compass
+  sudo gem install sass
+  sudo gem install susy
+  sudo gem install breakpoint
+
+Now we can test it in the web:
+
+  cd ~/github/jagracar.com/WebContent
+  compass watch
+  
+Install nodejs and grunt:
+
+  sudo apt-get install curl
+  curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  sudo npm install -g grunt-cli
+
+Check that it works on grafica.js:
+
+  cd ~/github/grafica.js/
+  npm install
+  grunt
+  
+  
+Useful links:
+
+  https://help.ubuntu.com/community/ApacheMySQLPHP

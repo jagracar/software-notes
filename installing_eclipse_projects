@@ -1,0 +1,80 @@
+
+Install the latest Eclipse:
+
+  cd ~/admin
+  mkdir eclipse
+  cd eclipse
+  wget https://www.eclipse.org/downloads/download.php?file=/oomph/epp/mars/R1a/eclipse-inst-linux64.tar.gz .
+  tar xvf eclipse-inst-linux64.tar.gz
+  cd eclipse-installer
+  ./eclipse-inst
+
+Select 'Eclipse IDE for Java Developers' and install it in ~/admin/eclipse
+
+Start Eclipse and create a new workspace at '~/github' (create the directory if you didn't do it yet).
+
+Install the following packages from the main eclipse repository:
+
+  Help > Install new software > Mars - http://download.eclipse.org/releases/mars
+
+   * Eclipse CVS Client
+   * Eclipse Web Developer Tools
+   * JavaScript Development Tools
+   * PHP Development Tools
+
+Add some extra plugins to eclipse:
+
+  Help > install new software:
+
+   - EclEmma: http://update.eclemma.org
+   - PyDev: http://pydev.org/updates
+   - HCSS: http://herschel.esac.esa.int/hcss/eclipse
+   - HCSS JTag: http://herschel.esac.esa.int/hcss/eclipse_jtag
+  
+Install the GLSL shader editor plugin:
+
+  http://sourceforge.net/projects/glshaders/
+
+Copy the files inside the 'plugins' directory to the eclipse directory '~/admin/eclipse/java-mars/eclipse/dropins/'
+
+Clone the github repositories:
+
+  cd ~/github
+  git clone https://github.com/jagracar/grafica.git
+  git clone https://github.com/jagracar/grafica.js.git
+  git clone https://github.com/jagracar/jagracar.com.git
+  git clone https://github.com/jagracar/leaptests.git
+  git clone https://github.com/jagracar/software-notes.git
+  git clone https://github.com/processing/processing.git
+  git clone https://github.com/mrdoob/three.js.git
+
+Import all the github projects into eclipse: 
+  
+  File > Import > Git > Projects from Git General > Existing local repository
+
+Download Processing and install it in '~/admin/processing'
+
+Create the libs directoy in the eclipse directoy and copy the processing libs there:
+
+  cd ~/admin/eclipse
+  mkdir libs
+  cd libs
+  cp ~/admin/processing/processing-3.0.1/core/library/core.jar .
+  cp ~/admin/processing/processing-3.0.1/core/library/gluegen-rt.jar .
+  cp ~/admin/processing/processing-3.0.1/core/library/gluegen-rt-natives-linux-amd64.jar .
+  cp ~/admin/processing/processing-3.0.1/core/library/jogl-all.jar .
+  cp ~/admin/processing/processing-3.0.1/core/library/jogl-all-natives-linux-amd64.jar .
+  cd ..
+  
+Change the build path in the grafica package to include core.jar in the libs directory.
+  
+Switch Workspace and create a new one in ~/work/pacs/hipe15.
+
+Download the herschel packages from the CVS repository (File > new Project > CVS > Projects from CVS).
+CVS info:
+
+ - Host: hercvs01.esac.esa.int
+ - Repository path: /services/repositories/HERSCHEL_CVS
+ - User: jgarcia
+ - Password: *******
+
