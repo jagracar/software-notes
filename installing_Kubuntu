@@ -1,8 +1,8 @@
 
-Installing kubuntu 15.10 on Acer Aspire V Nitro Black Edition VN7-592G-757F
+Installing Kubuntu 15.10 on Acer Aspire V Nitro Black Edition VN7-592G-757F
 ---------------------------------------------------------------------------
 
-Download the latest kubuntu:
+Download the latest Kubuntu:
 
   http://www.kubuntu.org/getkubuntu/
 
@@ -14,9 +14,7 @@ Create an installation usb:
 
   sudo dd if=kubuntu-15.10-desktop-amd64.iso of=/dev/sdb
   
-Bios configuration:
-  
-  Press F2 to enter the BIOS setup.
+BIOS configuration (press F2 to enter the BIOS setup)
   
   Main menu:
    - Network Boot: Disabled
@@ -27,104 +25,110 @@ Bios configuration:
   
   Boot menu:
    - Boot Mode: UEFI
-   - Secure Boot: Enabled
+   - Secure Boot: Disabled
    
   Save and restart
- 
-Press F12 to start the Boot Manager and select the General USB Flash Disk.
+
+Connect the usb. Reboot and press F12 to start the Boot Manager. Select the General USB Flash Disk.
 
 In GRUB select 'Start Kubuntu', but first set the boot parameters pressing the 'e' letter.
-We need to run GRUB with the boot option 'nomodeset'. Press ctr+x to boot.
+We need to run GRUB with the boot option 'nomodeset'. Press ctr+x to continue with the boot.
 
-Install kubuntu following the default steps. Reboot if everything went fine.
+Install Kubuntu following the default steps. Reboot if everything went fine.
 
 Remove the USB when asked and press enter. If nothing happens simply reboot the laptop.
 
 The boot will probably fail. We need to reboot and press F2 to enter the BIOS again.
 
-In the Security menu enter the 'Select an UEFI file as trusted for executing' menu.
-Select the shimx64.efi file and give it a name (e.g. Ubuntu). Save and exit.
+Enable Secure Boot in the Boot menu. After that, in the Security menu enter the 
+'Select an UEFI file as trusted for executing' menu. Select the grubx64.efi file and 
+give it a name (e.g. Kubuntu). Disable Secure Boot again. Save and exit.
 
-Luckily we will end up in GRUB again. We need to select Ubuntu and use the 'nomodeset' option.
+Luckily we will end up in GRUB (if not, press Esc to activate just after rebooting). 
+We need to select Kubuntu and use the 'nomodeset' option.
 
 Just after we login, we should remove the Bluetooth from the System Tray (inside System Tray 
 Settings). It can create problems and freeze the screen.
 
-Update the system. This seems to produce some problems with the sleep mode and screen
-brightness control, because they were working before. Probably is produced by an update
-of the linux kernel.
-
-At the same time modify the GRUB file '/etc/default/grub' to set the 'nomodeset' boot
-option by default.
-
-  GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nomodeset”
-
-Don't forget to update GRUB:
-
-  sudo update-grub
-  
-Next step is to make the wifi work. We need to do the following:
-
-  sudo rm /lib/firmware/ath10k/QCA6174/hw3.0/* 
-  sudo wget -O /lib/firmware/ath10k/QCA6174/hw3.0/board.bin https://github.com/FireWalkerX/ath10k-firmware/blob/7e56cbb94182a2fdab110cf5bfeded8fd1d44d30/QCA6174/hw3.0/board-2.bin?raw=true
-  sudo wget -O /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin https://github.com/FireWalkerX/ath10k-firmware/blob/7e56cbb94182a2fdab110cf5bfeded8fd1d44d30/QCA6174/hw3.0/firmware-4.bin_WLAN.RM.2.0-00180-QCARMSWPZ-1?raw=true
-  sudo chmod +x /lib/firmware/ath10k/QCA6174/hw3.0/*
-
-After this the wifi should be working. Maybe it needs a reboot.
-
-Install some additional software:
-
-  sudo apt-get install aptitude
-  sudo aptitude update
-  sudo aptitude install zile yakuake texlive texlive-lang-spanish r-base inkscape saods9 gv filezilla thunderbird vlc openshot kruler openjdk-8-jdk
-  sudo aptitude install python-scipy python3-scipy python-numpy python3-numpy python-matplotlib python3-matplotlib ipython ipython3
-  
-Install oracle java 7 and 8:
-
-  sudo add-apt-repository ppa:webupd8team/java
-  sudo aptitude update
-  sudo aptitude install oracle-java7-installer oracle-java8-installer
-
-We can optionally install the linux kernel 4.3.3. In my case this solves the brightness and sleep
-mode problems:
+The first thing to do is to install the linux kernel 4.3.4. This will solve many power 
+management problems (be able to change the brightness, activate the sleep mode), that were
+produced by the need of using the 'nomodeset' option in GRUB. 
 
   cd ~/admin
   mkdir kernel
   cd kernel
-  mkdir 4.3.3
-  cd 4.3.3
-  wget kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.3-wily/linux-headers-4.3.3-040303_4.3.3-040303.201512150130_all.deb \
-       kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.3-wily/linux-headers-4.3.3-040303-generic_4.3.3-040303.201512150130_amd64.deb \
-       kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.3-wily/linux-image-4.3.3-040303-generic_4.3.3-040303.201512150130_amd64.deb
+  mkdir 4.3.4
+  cd 4.3.4
+  wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.4-wily/linux-headers-4.3.4-040304_4.3.4-040304.201601230132_all.deb \
+       http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.4-wily/linux-headers-4.3.4-040304-generic_4.3.4-040304.201601230132_amd64.deb \
+       http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.4-wily/linux-image-4.3.4-040304-generic_4.3.4-040304.201601230132_amd64.deb
   sudo dpkg -i linux-headers-4.3*.deb linux-image-4.3*.deb
-  
-And if we want to remove it:
 
-  sudo apt-get remove linux-headers-4.3* linux-image-4.3*
+Reboot the laptop. Kubuntu should start without problems, but in case we need to remove
+the kernel, we can do the following:
 
-If the system reboots correctly with the new kernel, we can eliminate the 'nomodeset' option from 
-the GRUB parameters file '/etc/default/grub'. After that we should be able to modify the screen brightness
+  sudo aptitude purge linux-headers-4.3.4-040304 linux-headers-4.3.4-040304-generic linux-image-4.3.4-040304-generic
 
-In case we install the nvidia drivers and we need to remove them because the system crashes,
-we should do the following:
+Next step is to make the wifi work. We need to do the following:
+
+  mkdir ~/admin/wifiFirmware
+  mkdir ~/admin/wifiFirmware/old
+  sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/* ~/admin/wifiFirmware/old/.
+  sudo wget -O /lib/firmware/ath10k/QCA6174/hw3.0/board.bin https://github.com/FireWalkerX/ath10k-firmware/blob/7e56cbb94182a2fdab110cf5bfeded8fd1d44d30/QCA6174/hw3.0/board-2.bin?raw=true
+  sudo wget -O /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin https://github.com/FireWalkerX/ath10k-firmware/blob/7e56cbb94182a2fdab110cf5bfeded8fd1d44d30/QCA6174/hw3.0/firmware-4.bin_WLAN.RM.2.0-00180-QCARMSWPZ-1?raw=true
+  sudo chmod +x /lib/firmware/ath10k/QCA6174/hw3.0/*
+  sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/board.bin ~/admin/wifiFirmware/.
+  sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin ~/admin/wifiFirmware/.
+
+The wifi should work after a reboot.
+
+Now we can update the system:
+
+  sudo apt-get install aptitude
+  sudo aptitude update
+  sudo aptitude dist-upgrade
+
+Install some additional software:
+
+  sudo aptitude install zile yakuake texlive texlive-lang-spanish r-base inkscape saods9 gv filezilla thunderbird vlc openshot kruler openjdk-8-jdk git
+  sudo aptitude install python-scipy python3-scipy python-numpy python3-numpy python-matplotlib python3-matplotlib ipython ipython3
+ 
+Install the NVIDIA drivers: System Settings > Driver Manager > NVIDIA binary driver - version 352.63
+
+Make sure that we are using the intel GPU (The NVIDIA card has some problems with the sleep mode):
+
+  sudo prime-select intel
+  sudo update-grub
+
+Reboot.
+
+Install oracle java 7 and 8:
+
+  sudo add-apt-repository ppa:webupd8team/java
+  sudo aptitude update
+  sudo aptitude install oracle-java7-installer 
+  sudo aptitude install oracle-java8-installer
+
+In case we want to remove the NVIDIA drivers, we should do the following:
 
   sudo aptitude purge nvidia-352
   sudo aptitude install xserver-xorg-video-nouveau
-
-Install some enegy saving programs:
-
-  sudo aptitude install powertop
-  sudo aptitude install tlp
 
 If we want to stop akonadi and mysql:
 
   akonadictl stop
   sudo service mysql status
 
+Command to check software interrupts:
+
+  grep . -r /sys/firmware/acpi/interrupts/
+
 Useful links:
 
-  https://bbs.archlinux.org/viewtopic.php?id=206517
   https://notdefine.de/projects.php?project=Linux_on_Acer_Aspire_VN7-592G
+  http://linuxdaddy.com/blog/install-kernel-4-3-on-ubuntu/
+  https://bbs.archlinux.org/viewtopic.php?id=206517
   http://ubuntuforums.org/showthread.php?t=1613132
   http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
-  http://linuxdaddy.com/blog/install-kernel-4-3-on-ubuntu/
+  http://askubuntu.com/questions/176565/why-does-kworker-cpu-usage-get-so-high
+  http://unix.stackexchange.com/questions/91027/how-to-disable-usb-autosuspend-on-kernel-3-7-10-or-above
