@@ -4,7 +4,7 @@ Install the latest Eclipse:
   cd ~/admin
   mkdir eclipse
   cd eclipse
-  wget https://www.eclipse.org/downloads/download.php?file=/oomph/epp/mars/R1a/eclipse-inst-linux64.tar.gz .
+  wget -O eclipse-inst-linux64.tar.gz https://www.eclipse.org/downloads/download.php?file=/oomph/epp/mars/R1a/eclipse-inst-linux64.tar.gz
   tar xvf eclipse-inst-linux64.tar.gz
   cd eclipse-installer
   ./eclipse-inst
@@ -37,6 +37,11 @@ Install the GLSL shader editor plugin:
 
 Copy the files inside the 'plugins' directory to the eclipse directory '~/admin/eclipse/java-mars/eclipse/dropins/'
 
+Open the KDE Menu Editor and add a new item called Eclipse. Use the following command
+to force eclipse to use GTK2 (solves an annoying flickering scrollbar issue in GTK3):
+
+  export SWT_GTK3=0 && ~/admin/eclipse/eclipse/eclipse
+
 Clone the github repositories:
 
   cd ~/github
@@ -54,7 +59,7 @@ Import all the github projects into eclipse:
 
 Download Processing and install it in '~/admin/processing'
 
-Create the libs directoy in the eclipse directoy and copy the processing libs there:
+Create the libs directory in the eclipse directory and copy the processing libs there:
 
   cd ~/admin/eclipse
   mkdir libs
@@ -68,13 +73,23 @@ Create the libs directoy in the eclipse directoy and copy the processing libs th
   
 Change the build path in the grafica package to include core.jar in the libs directory.
   
-Switch Workspace and create a new one in ~/work/pacs/hipe15.
+Switch Workspace and create a new one in ~/work/pacs/track15.
 
-Download the herschel packages from the CVS repository (File > new Project > CVS > Projects from CVS).
-CVS info:
+Download the Herschel packages from the CVS repository (File > new Project > CVS > Projects from CVS).
 
- - Host: hercvs01.esac.esa.int
- - Repository path: /services/repositories/HERSCHEL_CVS
- - User: jgarcia
- - Password: *******
+  CVS info:
+   - Host: hercvs01.esac.esa.int
+   - Repository path: /services/repositories/HERSCHEL_CVS
+   - User: jgarcia
+   - Password: *******
+
+Download the hipe installer:
+
+  cd ~/work/pacs
+  wget -O hcss.installer.zip http://herschel.esac.esa.int/hcss/repository.php?item=hcss.installer.zip
+  unzip hcss.installer.zip
+
+Install one of the latest builds form http://herschel.esac.esa.int/hcss/build.php
+
+  ./hcss.installer --sync-installer=yes --src=yes --test=yes --doc=yes --unpack=yes hcss.dp.pacs 15.0 1397
 

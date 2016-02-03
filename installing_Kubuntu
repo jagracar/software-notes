@@ -14,7 +14,7 @@ Create an installation usb:
 
   sudo dd if=kubuntu-15.10-desktop-amd64.iso of=/dev/sdb
   
-BIOS configuration (press F2 to enter the BIOS setup)
+BIOS configuration (press F2 to enter the BIOS setup):
   
   Main menu:
    - Network Boot: Disabled
@@ -45,10 +45,11 @@ Enable Secure Boot in the Boot menu. After that, in the Security menu enter the
 give it a name (e.g. Kubuntu). Disable Secure Boot again. Save and exit.
 
 Luckily we will end up in GRUB (if not, press Esc to activate just after rebooting). 
-We need to select Kubuntu and use the 'nomodeset' option.
+We need to select Kubuntu and use the 'nomodeset' option (press 'e').
 
 Just after we login, we should remove the Bluetooth from the System Tray (inside System Tray 
-Settings). It can create problems and freeze the screen.
+Settings). It can create problems and freeze the screen (this did not happen in my last 
+installation, probably because y booted with the 'nomodeset' option).
 
 The first thing to do is to install the linux kernel 4.3.4. This will solve many power 
 management problems (be able to change the brightness, activate the sleep mode), that were
@@ -64,7 +65,7 @@ produced by the need of using the 'nomodeset' option in GRUB.
        http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.3.4-wily/linux-image-4.3.4-040304-generic_4.3.4-040304.201601230132_amd64.deb
   sudo dpkg -i linux-headers-4.3*.deb linux-image-4.3*.deb
 
-Reboot the laptop. Kubuntu should start without problems, but in case we need to remove
+Reboot the laptop. Kubuntu should start without problems. In case we need to remove
 the kernel, we can do the following:
 
   sudo aptitude purge linux-headers-4.3.4-040304 linux-headers-4.3.4-040304-generic linux-image-4.3.4-040304-generic
@@ -102,6 +103,11 @@ Make sure that we are using the intel GPU (The NVIDIA card has some problems wit
 
 Reboot.
 
+In case we want to remove the NVIDIA drivers, we should do the following:
+
+  sudo aptitude purge nvidia-352
+  sudo aptitude install xserver-xorg-video-nouveau
+
 Install oracle java 7 and 8:
 
   sudo add-apt-repository ppa:webupd8team/java
@@ -109,19 +115,11 @@ Install oracle java 7 and 8:
   sudo aptitude install oracle-java7-installer 
   sudo aptitude install oracle-java8-installer
 
-In case we want to remove the NVIDIA drivers, we should do the following:
+Install lm-sensors:
 
-  sudo aptitude purge nvidia-352
-  sudo aptitude install xserver-xorg-video-nouveau
-
-If we want to stop akonadi and mysql:
-
-  akonadictl stop
-  sudo service mysql status
-
-Command to check software interrupts:
-
-  grep . -r /sys/firmware/acpi/interrupts/
+  sudo aptitude install lm-sensors xsensors
+  sudo sensors-detect
+  
 
 Useful links:
 

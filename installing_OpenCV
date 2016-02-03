@@ -1,17 +1,17 @@
 
 Install all the dependencies:
 
-  sudo apt-get autoremove libopencv-dev python-opencv
-  sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove
-  sudo apt-get install build-essential cmake git
-  sudo apt-get install qt5-default libvtk6-dev
-  sudo apt-get install zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev
-  sudo apt-get install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev
-  sudo apt-get install libtbb-dev libeigen3-dev
-  sudo apt-get install python-dev python-tk python-numpy python3-dev python3-tk python3-numpy
-  sudo apt-get install ant default-jdk
-  sudo apt-get install doxygen
-  sudo apt-get install libgtk2.0-dev
+  sudo aptitude update 
+  sudo aptitude dist-upgrade
+  sudo aptitude purge libopencv-dev python-opencv
+  sudo aptitude install build-essential cmake git
+  sudo aptitude install qt5-default libvtk6-dev libgtk2.0-dev
+  sudo aptitude install zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev
+  sudo aptitude install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev
+  sudo aptitude install libtbb-dev libeigen3-dev
+  sudo aptitude install python-dev python-tk python-numpy python3-dev python3-tk python3-numpy
+  sudo aptitude install ant default-jdk
+  sudo aptitude install doxygen
 
 Download the latest OpenCV from github:
 
@@ -35,7 +35,7 @@ Dowload the contribution modules and the extas:
   git checkout 3.1.0
   cd ..
 
-Remove the hdf module at the moment creates problems to compile:
+Remove the hdf module (at the moment creates problems to compile):
 
   rm -r opencv_contrib/modules/hdf
 
@@ -45,7 +45,7 @@ Create the build directory and build OpenCV:
   mkdir build
   cd build
 
-  cmake -D CMAKE_BUILD_TYPE=Release -D OPENCV_EXTRA_MODULES_PATH=/home/jgracia/admin/opencv/opencv_contrib/modules/ -D BUILD_EXAMPLES=ON -D BUILD_DOCS=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
+  cmake -D CMAKE_BUILD_TYPE=Release -D OPENCV_EXTRA_MODULES_PATH=~/admin/opencv/opencv_contrib/modules/ -D BUILD_EXAMPLES=ON -D BUILD_DOCS=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
 
   make -j7
 
@@ -56,7 +56,7 @@ After a successful compilation, install it in the system:
 
 Check some of the examples to be sure that everything went fine:
 
-  export OPENCV_TEST_DATA_PATH=/home/jgracia/admin/opencv/opencv_extra/testdata
+  export OPENCV_TEST_DATA_PATH=~/admin/opencv/opencv_extra/testdata
   cd bin
   ./opencv_test_core 
 

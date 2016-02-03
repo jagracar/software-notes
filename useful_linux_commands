@@ -1,0 +1,38 @@
+
+  lspci
+
+  dmesg
+
+  lsmod
+
+  /etc/modprobe.d/blacklist.conf 
+
+  /etc/X11/xorg.conf
+
+  sudo prime-select nvidia
+  sudo prime-select intel
+  
+
+Command to check software interrupts:
+
+  grep . -r /sys/firmware/acpi/interrupts/
+  cat /proc/interrupts 
+ 
+If we want to stop akonadi and mysql:
+
+  akonadictl stop
+  sudo service mysql status
+  
+Edit and update the GRUB configuration:
+
+  sudo zile /etc/defaults/grub
+  sudo update-grub
+
+Information about power consumption:
+
+  sudo powertop
+  
+or:
+
+  sudo powertop-1.13 -d -t 60 > powertop.log
+  
