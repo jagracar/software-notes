@@ -9,9 +9,9 @@ Install all the dependencies:
   sudo aptitude install zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev
   sudo aptitude install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev
   sudo aptitude install libtbb-dev libeigen3-dev
-  sudo aptitude install python-dev python-tk python-numpy python3-dev python3-tk python3-numpy
+  sudo aptitude install python-dev python-tk python-numpy python3-dev python3-tk python3-numpy python-sphinx python3-sphinx
   sudo aptitude install ant default-jdk
-  sudo aptitude install doxygen
+  sudo aptitude install doxygen 
 
 Download the latest OpenCV from github:
 
@@ -45,7 +45,7 @@ Create the build directory and build OpenCV:
   mkdir build
   cd build
 
-  cmake -D CMAKE_BUILD_TYPE=Release -D OPENCV_EXTRA_MODULES_PATH=~/admin/opencv/opencv_contrib/modules/ -D BUILD_EXAMPLES=ON -D BUILD_DOCS=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
+  cmake -D CMAKE_BUILD_TYPE=Release -D OPENCV_EXTRA_MODULES_PATH=~/admin/opencv/opencv_contrib/modules/ -D BUILD_EXAMPLES=ON -D BUILD_DOCS=ON -D WITH_TBB=ON -D WITH_EIGEN=ON -D CMAKE_INSTALL_PREFIX=/usr/local ..
 
   make -j7
 

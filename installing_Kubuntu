@@ -91,7 +91,7 @@ Now we can update the system:
 
 Install some additional software:
 
-  sudo aptitude install zile yakuake texlive texlive-lang-spanish r-base inkscape saods9 gv filezilla thunderbird vlc openshot kruler openjdk-8-jdk git
+  sudo aptitude install zile yakuake texlive texlive-lang-spanish r-base inkscape saods9 gv filezilla thunderbird vlc openshot kruler openjdk-8-jdk git gimp
   sudo aptitude install python-scipy python3-scipy python-numpy python3-numpy python-matplotlib python3-matplotlib ipython ipython3
  
 Install the NVIDIA drivers: System Settings > Driver Manager > NVIDIA binary driver - version 352.63
