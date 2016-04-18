@@ -50,6 +50,7 @@ Clone the github repositories:
   git clone https://github.com/jagracar/jagracar.com.git
   git clone https://github.com/jagracar/leaptests.git
   git clone https://github.com/jagracar/software-notes.git
+  git clone https://github.com/jagracar/processingSketches.git
   git clone https://github.com/processing/processing.git
   git clone https://github.com/mrdoob/three.js.git
 

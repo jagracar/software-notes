@@ -92,8 +92,8 @@ Now we can update the system:
 Install some additional software:
 
   sudo aptitude install zile yakuake texlive texlive-lang-spanish r-base inkscape saods9 gv filezilla thunderbird vlc openshot kruler openjdk-8-jdk git gimp
-  sudo aptitude install python-scipy python3-scipy python-numpy python3-numpy python-matplotlib python3-matplotlib ipython ipython3
- 
+  sudo aptitude install python-scipy python3-scipy python-numpy python3-numpy python-matplotlib python3-matplotlib ipython ipython3 python-pip python3-pip
+
 Install the NVIDIA drivers: System Settings > Driver Manager > NVIDIA binary driver - version 352.63
 
 Make sure that we are using the intel GPU (The NVIDIA card has some problems with the sleep mode):
@@ -119,7 +119,19 @@ Install lm-sensors:
 
   sudo aptitude install lm-sensors xsensors
   sudo sensors-detect
-  
+ 
+Install astropy:
+
+  pip install astropy
+  pip3 install astropy
+  pip install matplotlib
+  pip3 install matplotlib
+
+Install some packages needed for the Processing video library:
+
+  sudo aptitude install gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly
+  wget http://ppa.launchpad.net/mc3man/gstffmpeg-keep/ubuntu/pool/main/g/gstreamer0.10-ffmpeg/gstreamer0.10-ffmpeg_0.10.13-5ubuntu1~vivid_amd64.deb && sudo dpkg -i gstreamer0.10-ffmpeg_0.10.13-5ubuntu1~vivid_amd64.deb
+
 
 Useful links:
 
