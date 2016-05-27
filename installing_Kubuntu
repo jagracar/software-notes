@@ -75,11 +75,11 @@ Next step is to make the wifi work. We need to do the following:
   mkdir ~/admin/wifiFirmware
   mkdir ~/admin/wifiFirmware/old
   sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/* ~/admin/wifiFirmware/old/.
-  sudo wget -O /lib/firmware/ath10k/QCA6174/hw3.0/board.bin https://github.com/FireWalkerX/ath10k-firmware/blob/7e56cbb94182a2fdab110cf5bfeded8fd1d44d30/QCA6174/hw3.0/board-2.bin?raw=true
-  sudo wget -O /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin https://github.com/FireWalkerX/ath10k-firmware/blob/7e56cbb94182a2fdab110cf5bfeded8fd1d44d30/QCA6174/hw3.0/firmware-4.bin_WLAN.RM.2.0-00180-QCARMSWPZ-1?raw=true
-  sudo chmod +x /lib/firmware/ath10k/QCA6174/hw3.0/*
-  sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/board.bin ~/admin/wifiFirmware/.
-  sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin ~/admin/wifiFirmware/.
+  cd ~/admin/wifiFirmware
+  wget https://github.com/kvalo/ath10k-firmware/archive/master.zip
+  unzip master.zip
+  sudo cp ath10k-firmware-master/QCA6174/hw3.0/* /lib/firmware/ath10k/QCA6174/hw3.0/.
+  sudo mv /lib/firmware/ath10k/QCA6174/hw3.0/firmware-4*  /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin 
 
 The wifi should work after a reboot.
 
@@ -93,6 +93,7 @@ Install some additional software:
 
   sudo aptitude install zile yakuake texlive texlive-lang-spanish r-base inkscape saods9 gv filezilla thunderbird vlc openshot kruler openjdk-8-jdk git gimp
   sudo aptitude install python-scipy python3-scipy python-numpy python3-numpy python-matplotlib python3-matplotlib ipython ipython3 python-pip python3-pip
+  sudo aptitude install plasma-workspace-wallpapers
 
 Install the NVIDIA drivers: System Settings > Driver Manager > NVIDIA binary driver - version 352.63
 
@@ -131,6 +132,10 @@ Install some packages needed for the Processing video library:
 
   sudo aptitude install gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly
   wget http://ppa.launchpad.net/mc3man/gstffmpeg-keep/ubuntu/pool/main/g/gstreamer0.10-ffmpeg/gstreamer0.10-ffmpeg_0.10.13-5ubuntu1~vivid_amd64.deb && sudo dpkg -i gstreamer0.10-ffmpeg_0.10.13-5ubuntu1~vivid_amd64.deb
+
+Remove akonadi:
+
+  sudo apt-get remove --purge kmail akonadi-server
 
 
 Useful links:
