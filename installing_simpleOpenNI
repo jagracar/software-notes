@@ -1,0 +1,43 @@
+
+Install the OpenKinect/libfreenect library and drivers:
+
+  sudo aptitude install libfreenect0.5 libfreenect-bin
+
+Connect the Kinect and check that this demo works:
+
+  freenect-glview
+
+Install the simpleOpenNI Processing 3.0 library:
+
+  cd ~/admin
+  mkdir kinect
+  cd kinect
+  wget https://github.com/jaegonlee/SimpleOpenNI/archive/master.zip
+  unzip  master.zip
+  mv SimpleOpenNI-master SimpleOpenNI
+
+Copy the library to the Processing libraries directory:
+
+  cp -R SimpleOpenNI ~/sketchbook/libraries/.
+  
+Start Processing and check that the library examples work correctly.
+
+If the examples produce the following error:
+
+   java.lang.UnsatisfiedLinkError: 
+   .../sketchbook/libraries/SimpleOpenNI/library/libSimpleOpenNI64.so: 
+   libboost_system.so.1.54.0: cannot open shared object file: No such file or directory
+   Verify if you installed SimpleOpenNI correctly.
+
+we have to create a symbolic link to fix it:
+
+  sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_system.so.1.58.0 /usr/lib/x86_64-linux-gnu/libboost_system.so.1.54.0 
+
+
+Useful information:
+
+  https://openkinect.org
+  https://github.com/OpenKinect/libfreenect
+  https://github.com/jaegonlee/SimpleOpenNI
+  https://code.google.com/archive/p/simple-openni/
+
