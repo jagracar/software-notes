@@ -1,0 +1,73 @@
+
+Based on the following tutorial:
+ 
+  http://www.tutorialspoint.com/svn/index.htm
+   
+---------------------------------------------------------------
+   
+Get help information:
+
+  svn help
+
+Checkout an svn repository:
+
+  svn checkout http://svn.server.com/svn/project_repo --username=tom
+
+Look the working directory info:
+
+  cd project_repo
+  svn info
+  
+Check the working directory status:
+
+  svn status
+  
+Add a file to the pending change list:
+
+  svn add file.dat
+ 
+Commit the changes to the repository:
+
+  svn commit -m "Commit message"
+
+Check the log information of a given revision:
+
+  svn log --revision 14764
+
+Check the difference between the working directory and the repository:
+
+  svn diff
+ 
+Update the working directory:
+ 
+  svn update
+
+Revert the changes made to a given file:
+
+  svn revert file.dat
+  
+Revert a complete directory
+
+  svn revert -R trunk
+  
+Create a tag:
+
+  svn copy --revision=4 trunk/ tags/tag_name
+ 
+Create a branch:
+  
+  svn copy trunk/ branches/branch_name
+
+Merge on branck into trunk:
+
+  cd trunk
+  svn merge ../branches/branch_name/
+
+
+
+More useful information:
+
+  http://svnbook.red-bean.com/en/1.7/index.html
+  http://www.linuxfromscratch.org/blfs/edguide/chapter03.html
+  
+  
