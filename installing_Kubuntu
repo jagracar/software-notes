@@ -137,6 +137,16 @@ Remove akonadi:
 
   sudo apt-get remove --purge kmail akonadi-server
 
+After an upgrade to Kubuntu 16.1 I found that the first CPU was always 100% active.
+Printing the interrupts with the following command showed the cause:
+
+  grep . -r /sys/firmware/acpi/interrupts/
+
+
+Adding this line to /etc/rc.local solved the problem:
+
+  echo "disable" > /sys/firmware/acpi/interrupts/gpe61
+
 
 Useful links:
 
