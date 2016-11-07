@@ -142,7 +142,6 @@ Printing the interrupts with the following command showed the cause:
 
   grep . -r /sys/firmware/acpi/interrupts/
 
-
 Adding this line to /etc/rc.local solved the problem:
 
   echo "disable" > /sys/firmware/acpi/interrupts/gpe61

@@ -5,7 +5,7 @@ Install all the dependencies:
   sudo aptitude dist-upgrade
   sudo aptitude purge libopencv-dev python-opencv
   sudo aptitude install build-essential cmake git
-  sudo aptitude install qt5-default libvtk6-dev libgtk2.0-dev
+  sudo aptitude install qt5-default libvtk6-dev libgtk2.0-dev gnome-themes-standard
   sudo aptitude install zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev
   sudo aptitude install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev
   sudo aptitude install libtbb-dev libeigen3-dev
