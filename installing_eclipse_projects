@@ -95,6 +95,14 @@ Follow the steps from this link:
 
   http://herschel.esac.esa.int/twiki/bin/view/Hcss/HcssInEclipse
 
+Set the following properties in Window > Preferences > HCSS:
+
+  Installer Directory : /home/jgracia/work/pacs
+  Projects Directory: /home/jgracia/work/pacs
+  Download Documentation: active
+  Download Source code: active
+  Download Test tree: active
+
 Install 'Eclipse IDE for C/C++ Developers':
 
   cd ~/admin/eclipse-installer
