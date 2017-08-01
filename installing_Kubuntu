@@ -109,6 +109,10 @@ In case we want to remove the NVIDIA drivers, we should do the following:
   sudo aptitude purge nvidia-352
   sudo aptitude install xserver-xorg-video-nouveau
 
+Fix headphone microphone adding the following line to /etc/modprobe.d/alsa-base.conf:
+
+  options snd-hda-intel model=dell-headset-multi
+
 Install oracle java 7 and 8:
 
   sudo add-apt-repository ppa:webupd8team/java
@@ -137,6 +141,18 @@ Install some packages needed for the Processing video library:
   sudo aptitude install gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly
   wget http://ppa.launchpad.net/mc3man/gstffmpeg-keep/ubuntu/pool/main/g/gstreamer0.10-ffmpeg/gstreamer0.10-ffmpeg_0.10.13-5ubuntu1~vivid_amd64.deb && sudo dpkg -i gstreamer0.10-ffmpeg_0.10.13-5ubuntu1~vivid_amd64.deb
 
+Install Docker:
+
+  sudo aptitude install apt-transport-https ca-certificates curl
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo aptitude update
+  sudo aptitude install docker-ce
+  sudo systemctl start docker
+  sudo systemctl enable docker 
+  sudo groupadd docker
+  sudo gpasswd -a ${USER} docker
+
 Remove akonadi:
 
   sudo apt-get remove --purge kmail akonadi-server
@@ -160,3 +176,5 @@ Useful links:
   http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
   http://askubuntu.com/questions/176565/why-does-kworker-cpu-usage-get-so-high
   http://unix.stackexchange.com/questions/91027/how-to-disable-usb-autosuspend-on-kernel-3-7-10-or-above
+  https://bugs.launchpad.net/ubuntu/+source/alsa-driver/+bug/1523100
+  
