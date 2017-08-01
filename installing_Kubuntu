@@ -131,6 +131,11 @@ Install astropy:
   pip3 install astropy
   pip install matplotlib
   pip3 install matplotlib
+ 
+Install TensorFlow:
+
+  pip install tensorflow
+  pip3 install tensorflow
 
 Install zoom:
   
