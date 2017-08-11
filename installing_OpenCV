@@ -13,6 +13,20 @@ Install all the dependencies:
   sudo aptitude install ant default-jdk
   sudo aptitude install doxygen 
 
+Add this line to /etc/apt/sources.list
+
+  deb http://us.archive.ubuntu.com/ubuntu/ yakkety universe
+
+Install libjasper-dev:
+
+  sudo aptitude update
+  sudo aptitude install libjasper-dev
+
+Comment the line from /etc/apt/sources.list and update:
+
+  sudo aptitude update
+
+
 Download the latest OpenCV from github:
 
   cd ~/admin
@@ -20,19 +34,19 @@ Download the latest OpenCV from github:
   cd opencv
   git clone https://github.com/Itseez/opencv.git
   cd opencv
-  git checkout 3.1.0
+  git checkout 3.3.0
   cd ..
 
 Dowload the contribution modules and the extas:
 
   git clone https://github.com/Itseez/opencv_contrib.git
   cd opencv_contrib
-  git checkout 3.1.0
+  git checkout 3.3.0
   cd ..
 
   git clone https://github.com/Itseez/opencv_extra.git
   cd opencv_extra
-  git checkout 3.1.0
+  git checkout 3.3.0
   cd ..
 
 Remove the hdf module (at the moment creates problems to compile):
@@ -72,3 +86,5 @@ Useful links:
   http://milq.github.io/install-opencv-ubuntu-debian/
   http://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html#gsc.tab=0
   http://docs.opencv.org/master/dd/dd5/tutorial_py_setup_in_fedora.html
+  https://stackoverflow.com/questions/43484357/opencv-in-ubuntu-17-04
+  

@@ -127,15 +127,19 @@ Install lm-sensors:
  
 Install astropy:
 
-  pip install astropy
-  pip3 install astropy
-  pip install matplotlib
-  pip3 install matplotlib
+  pip install astropy numpy matplotlib scipy
+  pip3 install astropy numpy matplotlib scipy
  
 Install TensorFlow:
 
-  pip install tensorflow
+  pip install tensorflow 
   pip3 install tensorflow
+
+Install jupyter, pandas and sklearn:
+  
+  sudo apt install jupyter-notebook jupyter-core python-ipykernel 
+  pip install pandas sklearn
+  pip3 install pandas sklearn
 
 Install zoom:
   
