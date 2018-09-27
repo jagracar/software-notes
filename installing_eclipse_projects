@@ -49,6 +49,8 @@ Clone the github repositories:
   git clone https://github.com/jagracar/kinectSketches.git
   git clone https://github.com/jagracar/OpenCV-python-tests.git
   git clone https://github.com/jagracar/tensorflow-tests.git
+  git clone https://github.com/jagracar/ofxGrafica.git
+  git clone https://github.com/jagracar/ofxOilPaint.git
   git clone https://github.com/processing/processing.git
   git clone https://github.com/mrdoob/three.js.git
 
